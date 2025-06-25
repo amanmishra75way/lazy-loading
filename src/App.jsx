@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useState } from "react";
 // import User from "./User";
 const User = lazy(() => import("./User")); // Import like thsis
+import Loader from "./Loader";
 const App = () => {
   const [load, setLoad] = useState(false);
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <div>Lazy Loading</div>
       {/* we want this componet to laod only button cick but it still loading on initials which consumes time */}
       {load ? (
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<Loader />}>
           <User />
         </Suspense>
       ) : (
